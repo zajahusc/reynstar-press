@@ -546,23 +546,12 @@ input {
   line-height: 1.9;
 }
 
-.signature-row {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-  margin-top: 28px;
-}
-
-.signature {
-  font-family: "Cormorant Garamond", serif;
-  font-size: 2.1rem;
-}
-
-.role {
-  color: var(--muted);
-  letter-spacing: 0.12em;
+.values-note {
+  margin-top: 24px;
+  color: var(--gold);
+  font-size: 0.8rem;
+  letter-spacing: 0.16em;
   text-transform: uppercase;
-  font-size: 0.76rem;
 }
 
 .quote-band {
