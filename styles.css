@@ -451,7 +451,7 @@ input {
 
 .catalog-grid {
   display: grid;
-  grid-template-columns: 1.2fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr;
   gap: 28px;
 }
 
@@ -464,7 +464,7 @@ input {
 }
 
 .feature-card.large {
-  grid-column: span 1;
+  grid-column: span 2;
 }
 
 .card-art {
@@ -473,22 +473,32 @@ input {
   background-position: center;
 }
 
-.art-one {
-  background:
-    linear-gradient(180deg, rgba(28, 25, 22, 0.14), rgba(14, 10, 8, 0.26)),
-    url("https://images.unsplash.com/photo-1516979187457-637abb4f9353?auto=format&fit=crop&w=1200&q=80") center/cover no-repeat;
+.cover-inevitable {
+  background: url("assets/covers/inevitable-constellations.png") center/cover no-repeat;
 }
 
-.art-two {
-  background:
-    linear-gradient(180deg, rgba(40, 35, 30, 0.14), rgba(17, 16, 14, 0.2)),
-    url("https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1200&q=80") center/cover no-repeat;
+.cover-chasing {
+  background: url("assets/covers/chasing-stars.png") center/cover no-repeat;
 }
 
-.art-three {
-  background:
-    linear-gradient(180deg, rgba(28, 32, 30, 0.18), rgba(11, 9, 12, 0.26)),
-    url("https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1200&q=80") center/cover no-repeat;
+.cover-pending {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(160deg, rgba(46, 40, 35, 0.9), rgba(10, 9, 8, 0.95));
+  color: var(--muted);
+  font-size: 0.78rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.zines-card {
+  display: flex;
+  align-items: center;
+}
+
+.zines-card .card-copy {
+  padding: 34px;
 }
 
 .card-copy {
