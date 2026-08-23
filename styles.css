@@ -385,22 +385,12 @@ input {
   text-transform: uppercase;
 }
 
-.cover-one {
-  background:
-    linear-gradient(160deg, rgba(121, 86, 63, 0.8), rgba(22, 18, 16, 0.8)),
-    url("https://images.unsplash.com/photo-1512820790803-83ca734da794?auto=format&fit=crop&w=900&q=80") center/cover no-repeat;
+.cover-chasing-hero {
+  background: url("assets/covers/chasing-stars.png") center/cover no-repeat;
 }
 
-.cover-two {
-  background:
-    linear-gradient(160deg, rgba(65, 60, 76, 0.72), rgba(15, 16, 20, 0.82)),
-    url("https://images.unsplash.com/photo-1493246507139-91e8fad9978e?auto=format&fit=crop&w=900&q=80") center/cover no-repeat;
-}
-
-.cover-three {
-  background:
-    linear-gradient(140deg, rgba(120, 88, 65, 0.7), rgba(22, 17, 18, 0.8)),
-    url("https://images.unsplash.com/photo-1521587760476-6c12a4b040da?auto=format&fit=crop&w=900&q=80") center/cover no-repeat;
+.cover-inevitable-hero {
+  background: url("assets/covers/inevitable-constellations.png") center/cover no-repeat;
 }
 
 .marks {
