@@ -491,15 +491,6 @@ input {
   text-transform: uppercase;
 }
 
-.zines-card {
-  display: flex;
-  align-items: center;
-}
-
-.zines-card .card-copy {
-  padding: 34px;
-}
-
 .card-copy {
   padding: 26px 22px 24px;
 }
