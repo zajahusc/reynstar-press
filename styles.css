@@ -294,8 +294,8 @@ input {
 
 .book-cluster {
   position: relative;
-  width: min(360px, 100%);
-  height: 465px;
+  width: min(250px, 100%);
+  height: 325px;
 }
 
 .book {
@@ -306,17 +306,17 @@ input {
 }
 
 .book-main {
-  top: 38px;
-  left: 46px;
-  width: 218px;
-  height: 315px;
+  top: 27px;
+  left: 32px;
+  width: 152px;
+  height: 220px;
   transform: rotate(-11deg);
 }
 
 .book-side {
-  width: 158px;
-  height: 225px;
-  top: 165px;
+  width: 110px;
+  height: 157px;
+  top: 115px;
 }
 
 .side-left {
