@@ -95,7 +95,7 @@ input {
 }
 
 .brand-logo {
-  width: clamp(220px, 18vw, 360px);
+  width: clamp(187px, 15.3vw, 306px);
   max-width: 100%;
   height: auto;
   display: block;
