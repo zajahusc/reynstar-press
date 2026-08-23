@@ -213,9 +213,9 @@ input {
 .hero-inner {
   display: grid;
   grid-template-columns: 1.1fr 0.9fr;
-  align-items: center;
+  align-items: start;
   gap: 52px;
-  min-height: 720px;
+  min-height: 480px;
 }
 
 .eyebrow {
@@ -289,7 +289,8 @@ input {
 .hero-visual {
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
+  padding-top: 8px;
 }
 
 .book-cluster {
@@ -657,15 +658,9 @@ input {
 }
 
 @media (max-width: 980px) {
-  .hero-inner,
   .house,
   .catalog-grid {
     grid-template-columns: 1fr;
-  }
-
-  .hero-inner {
-    min-height: auto;
-    padding-bottom: 60px;
   }
 
   .newsletter-box,
@@ -676,6 +671,14 @@ input {
 
   .newsletter-form {
     width: 100%;
+  }
+}
+
+@media (max-width: 700px) {
+  .hero-inner {
+    grid-template-columns: 1fr;
+    min-height: auto;
+    padding-bottom: 60px;
   }
 }
 
