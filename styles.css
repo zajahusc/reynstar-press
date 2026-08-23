@@ -451,7 +451,7 @@ input {
 
 .catalog-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: calc(50% - 14px) calc(50% - 14px);
   gap: 28px;
 }
 
