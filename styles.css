@@ -433,7 +433,7 @@ input {
 }
 
 .section-heading {
-  max-width: 720px;
+  max-width: none;
   margin-bottom: 36px;
 }
 
