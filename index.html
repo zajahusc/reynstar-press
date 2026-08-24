@@ -262,8 +262,20 @@
               <p class="eyebrow">Stay in the loop</p>
               <h2>Receive new releases and editorial notes.</h2>
             </div>
-            <form class="newsletter-form">
-              <input type="email" placeholder="Your email address" aria-label="Your email address" />
+            <form
+              class="newsletter-form"
+              action="https://formsubmit.co/info@reynstarpress.com"
+              method="POST"
+            >
+              <input
+                type="email"
+                name="email"
+                placeholder="Your email address"
+                aria-label="Your email address"
+                required
+              />
+              <input type="hidden" name="_subject" value="New Reynstar Press subscriber" />
+              <input type="hidden" name="_next" value="https://reynstarpress.com/#newsletter" />
               <button type="submit">Join the list</button>
             </form>
           </div>
@@ -279,7 +291,7 @@
           <div class="footer-links">
             <a href="#catalog">Catalog</a>
             <a href="#house">The House</a>
-            <a href="mailto:hello@reynstarpress.com">hello@reynstarpress.com</a>
+            <a href="mailto:info@reynstarpress.com">info@reynstarpress.com</a>
           </div>
           <p class="copyright">© <span id="year"></span> Reynstar Press</p>
         </div>
