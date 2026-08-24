@@ -462,7 +462,7 @@ input {
 }
 
 .card-art {
-  height: 300px;
+  aspect-ratio: 4 / 1;
   background-size: cover;
   background-position: center;
 }

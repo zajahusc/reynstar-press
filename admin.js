@@ -10,6 +10,7 @@ const blankBook = () => ({
   description: '',
   release: '',
   cover: '',
+  banner: '',
   coverLabel: 'Cover to be revealed'
 });
 
@@ -28,6 +29,7 @@ function renderBooks() {
             <label>Genre<input required data-field="genre" data-index="${index}" value="${escapeAttribute(book.genre)}" /></label>
             <label>Release status<input required data-field="release" data-index="${index}" value="${escapeAttribute(book.release)}" /></label>
             <label class="editor-wide">Cover path or image URL<input data-field="cover" data-index="${index}" value="${escapeAttribute(book.cover)}" placeholder="assets/covers/my-book.png" /></label>
+            <label class="editor-wide">Banner path or image URL<input data-field="banner" data-index="${index}" value="${escapeAttribute(book.banner)}" placeholder="assets/banners/my-book-banner.png" /></label>
             <label class="editor-wide">Cover placeholder text<input data-field="coverLabel" data-index="${index}" value="${escapeAttribute(book.coverLabel)}" placeholder="Cover to be revealed" /></label>
             <label class="editor-wide">Description<textarea required data-field="description" data-index="${index}" rows="5">${escapeHtml(book.description)}</textarea></label>
           </div>

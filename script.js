@@ -38,8 +38,8 @@ function renderCatalog(books) {
     .map(
       (book) => `
         <article class="feature-card${book.title === 'The End' ? ' large' : ''} reveal">
-          <div class="card-art${book.cover ? '' : ' cover-pending'}" data-cover="${escapeHtml(book.cover)}">
-            ${book.cover ? '' : `<span>${escapeHtml(book.coverLabel || 'Cover to be revealed')}</span>`}
+          <div class="card-art${book.banner ? '' : ' cover-pending'}" data-banner="${escapeHtml(book.banner)}">
+            ${book.banner ? '' : `<span>${escapeHtml(book.coverLabel || 'Banner to be revealed')}</span>`}
           </div>
           <div class="card-copy">
             <span class="tag">${escapeHtml(book.genre)}</span>
@@ -55,8 +55,8 @@ function renderCatalog(books) {
     )
     .join('');
 
-  catalogGrid.querySelectorAll('[data-cover]').forEach((cover) => {
-    if (cover.dataset.cover) cover.style.backgroundImage = `url("${cover.dataset.cover}")`;
+  catalogGrid.querySelectorAll('[data-banner]').forEach((banner) => {
+    if (banner.dataset.banner) banner.style.backgroundImage = `url("${banner.dataset.banner}")`;
   });
 
   catalogGrid.querySelectorAll('.reveal').forEach((item) => observer.observe(item));
