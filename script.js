@@ -20,6 +20,7 @@ if (yearElement) {
 }
 
 const catalogGrid = document.getElementById('catalog-grid');
+const fallbackCatalog = JSON.parse(document.getElementById('catalog-data')?.textContent || '[]');
 
 function escapeHtml(value = '') {
   return String(value)
@@ -68,7 +69,7 @@ fetch('books.json')
   })
   .then(renderCatalog)
   .catch(() => {
-    if (catalogGrid) catalogGrid.innerHTML = '<p class="catalog-status">The catalog is temporarily unavailable.</p>';
+    renderCatalog(fallbackCatalog);
   });
 
 document.querySelector('.newsletter-form')?.addEventListener('submit', (event) => {
