@@ -458,7 +458,7 @@ input {
 }
 
 .feature-card.large {
-  grid-column: span 2;
+  grid-column: auto;
 }
 
 .card-art {
