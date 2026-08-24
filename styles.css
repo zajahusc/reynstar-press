@@ -394,6 +394,10 @@ input {
   background: url("assets/covers/inevitable-constellations.png") center/cover no-repeat;
 }
 
+.cover-the-end-hero {
+  background: url("assets/covers/the-end.png") center/cover no-repeat;
+}
+
 .marks {
   padding: 32px 0 20px;
 }
@@ -441,7 +445,7 @@ input {
 
 .catalog-grid {
   display: grid;
-  grid-template-columns: calc(50% - 14px) calc(50% - 14px);
+  grid-template-columns: 1fr;
   gap: 28px;
 }
 
