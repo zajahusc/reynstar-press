@@ -4,7 +4,7 @@
     "author": "Philip Schorsch",
     "genre": "Poetry",
     "description": "An untitled collection of poetry from Philip Schorsch, exploring the textures of memory, place, and the small rituals that make up a day. Release date to be determined.",
-    "release": "Release date to be determined",
+    "release": "Spring 2027",
     "cover": "",
     "coverLabel": "Cover to be revealed"
   },
@@ -13,8 +13,8 @@
     "author": "Zac James",
     "genre": "Fiction",
     "description": "The flare arrives without warning. In the aftermath, the world does not end all at once—it empties. Years later, Elliot has built something resembling a life in the ruins, but survival has a way of preserving the things we thought the end of the world would erase. A novel about friendship, grief, isolation, and what remains when the future everyone expected simply stops coming.",
-    "release": "After Philip Schorsch's poetry collection",
-    "cover": "",
+    "release": "Summer 2027",
+    "cover": "assets/covers/the-end.png",
     "coverLabel": "Cover to be revealed"
   },
   {
@@ -22,7 +22,7 @@
     "author": "Zac James",
     "genre": "Queer Literary Fiction / Romance",
     "description": "Running from a life he no longer recognizes, a man finds himself drawn into a love affair as beautiful as it is impossible to hold onto. Chasing Stars is a queer love story about desire, depression, and the people we mistake for destinations—and whether some people enter our lives simply to teach us how to keep moving after they are gone.",
-    "release": "Published August 2026",
+    "release": "October 1, 2026",
     "cover": "assets/covers/chasing-stars.png",
     "coverLabel": ""
   },
@@ -31,7 +31,7 @@
     "author": "Zac James",
     "genre": "Poetry",
     "description": "A collection of poetry about the people we love, the lives we imagine, and the strange inevitability of becoming who we are. Inevitable Constellations traces intimacy, loss, longing, and memory through the quiet connections that only become visible when we look backward—like stars that were always there, waiting for us to draw the lines between them.",
-    "release": "Published June 2025",
+    "release": "September 1, 2026",
     "cover": "assets/covers/inevitable-constellations.png",
     "coverLabel": ""
   }
