@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Catalog Editor | Reynstar Press</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body class="admin-page">
+    <main class="admin-shell">
+      <header class="admin-header">
+        <div>
+          <p class="eyebrow">Reynstar Press</p>
+          <h1>Catalog editor</h1>
+          <p class="admin-intro">Edit the records below, then download the updated catalog file and commit it with the website.</p>
+        </div>
+        <a class="button secondary" href="index.html">View website</a>
+      </header>
+
+      <form id="catalog-editor" class="editor-form">
+        <div id="book-list" class="editor-list" aria-live="polite"></div>
+        <div class="editor-actions">
+          <button class="button secondary" type="button" id="add-book">Add a book</button>
+          <button class="button primary" type="submit">Download books.json</button>
+        </div>
+        <p id="editor-status" class="editor-status" role="status"></p>
+      </form>
+    </main>
+    <script src="admin.js"></script>
+  </body>
+</html>
