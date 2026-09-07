@@ -13,8 +13,7 @@ function doPost(e) {
     const props = PropertiesService.getScriptProperties();
     const secret = props.getProperty('TURNSTILE_SECRET_KEY');
     const recipient = props.getProperty('CONTACT_EMAIL');
-    const sheetId = props.getProperty('SHEET_ID');
-    if (!secret || !recipient || !sheetId) throw new Error('Missing configuration');
+    if (!secret || !recipient) throw new Error('Missing configuration');
     stage = 'form-validation';
     const kind = p.kind;
     if (!['contact', 'newsletter', 'order'].includes(kind)) return reject(stage);
@@ -38,18 +37,6 @@ function doPost(e) {
     if (!verification.success) return reject('turnstile-rejected');
     if (!['reynstarpress.com', 'www.reynstarpress.com'].includes(verification.hostname)) return reject('turnstile-hostname');
     if (verification.action !== 'press_form') return reject('turnstile-action');
-    if (kind === 'order' && p.book === 'Chasing Stars') {
-      stage = 'sheet-write';
-      const lock = LockService.getScriptLock();
-      try {
-        lock.waitLock(10000);
-        const sheet = SpreadsheetApp.openById(sheetId).getSheetByName('Orders');
-        if (!sheet) return reject('orders-tab-missing');
-        const safe = value => /^[=+\-@\t\r\n]/.test(value) ? "'" + value : value;
-        sheet.appendRow([new Date(), safe(name), safe(email), safe(address), quantity, p.format]);
-        SpreadsheetApp.flush();
-      } finally { if (lock.hasLock()) lock.releaseLock(); }
-    } else {
       let subject, body;
       if (kind === 'contact') {
         subject = 'Reynstar Press: ' + p.topic;
@@ -62,7 +49,6 @@ function doPost(e) {
       }
       stage = 'email-send';
       MailApp.sendEmail({ to: recipient, replyTo: email, subject: subject, body: body });
-    }
     return reply(true, kind);
   } catch (error) {
     // Never expose configuration, email addresses, or submitted personal details.
@@ -88,13 +74,9 @@ function pressResponse(success, kind, parameters) {
 // Run manually from the Apps Script editor; no messages or sheet rows are sent.
 function diagnoseSetup() {
   const props = PropertiesService.getScriptProperties();
-  ['TURNSTILE_SECRET_KEY', 'CONTACT_EMAIL', 'SHEET_ID'].forEach(key => {
+  ['TURNSTILE_SECRET_KEY', 'CONTACT_EMAIL'].forEach(key => {
     console.log(key + ': ' + (props.getProperty(key) ? 'present' : 'MISSING'));
   });
-  try {
-    const sheet = SpreadsheetApp.openById(props.getProperty('SHEET_ID')).getSheetByName('Orders');
-    console.log('Orders tab: ' + (sheet ? 'accessible' : 'MISSING'));
-  } catch (error) { console.log('Sheet check failed: check SHEET_ID and account access.'); }
   try {
     console.log('Email permission/quota: ' + (MailApp.getRemainingDailyQuota() > 0 ? 'available' : 'quota exhausted'));
   } catch (error) { console.log('Email check failed: authorize email permissions.'); }

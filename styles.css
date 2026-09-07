@@ -955,3 +955,6 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 .form-verification { min-width: 0; width: 100%; }
 .newsletter-form { flex-wrap: wrap; }
 button:disabled { opacity: .55; cursor: not-allowed; }
+
+.catalog-home { padding-top: 64px; }
+.catalog-home h1 { font-family: "Cormorant Garamond", serif; font-size: clamp(3rem, 6vw, 5.5rem); line-height: 1.05; font-weight: 500; margin: 16px 0 24px; }
