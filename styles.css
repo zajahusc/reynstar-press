@@ -968,3 +968,15 @@ button:disabled { opacity: .55; cursor: not-allowed; }
 
 .catalog-home { padding-top: 64px; }
 .catalog-home h1 { font-family: "Cormorant Garamond", serif; font-size: clamp(3rem, 6vw, 5.5rem); line-height: 1.05; font-weight: 500; margin: 16px 0 24px; }
+
+.cover-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(24px, 5vw, 64px); margin-top: 40px; align-items: start; }
+.catalog-cover { display: block; min-width: 0; }
+.catalog-cover img { width: 100%; height: auto; box-shadow: var(--shadow); transition: transform .2s ease; }
+.catalog-cover:hover img { transform: translateY(-6px); }
+.catalog-intro { color: var(--muted); }
+.cover-placeholder { display: grid; align-content: center; gap: 20px; aspect-ratio: 2 / 3; padding: 24px; background: var(--panel); text-align: center; font-family: "Cormorant Garamond", serif; font-size: 2rem; }
+.cover-placeholder small { font: .8rem "Manrope", sans-serif; }
+.nav-links { flex-wrap: wrap; }
+@media (max-width: 980px) { .nav { flex-wrap: wrap; padding: 16px 0; } .nav-links { gap: 16px; } }
+@media (max-width: 640px) { .cover-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; } }
+@media (prefers-reduced-motion: reduce) { .catalog-cover img { transition: none; } .catalog-cover:hover img { transform: none; } }

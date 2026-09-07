@@ -31,10 +31,34 @@ function escapeHtml(value = '') {
     .replace(/'/g, '&#039;');
 }
 
+function newestBooks(books) {
+  const timestamp = (book) => {
+    const key = book.releaseSort || book.release;
+    const parsed = Date.parse(key);
+    return Number.isNaN(parsed) ? 0 : parsed;
+  };
+  return [...books].sort((a, b) => timestamp(b) - timestamp(a));
+}
+
 function renderCatalog(books) {
   if (!catalogGrid) return;
 
-  catalogGrid.innerHTML = books
+  const sorted = newestBooks(books);
+  const limit = Number(catalogGrid.dataset.limit);
+  const selected = limit > 0 ? sorted.slice(0, limit) : sorted;
+  if (catalogGrid.dataset.view === 'covers') {
+    catalogGrid.innerHTML = selected.map((book) => {
+      const cover = book.cover
+        ? `<img src="${escapeHtml(book.cover)}" alt="${escapeHtml(book.title)} by ${escapeHtml(book.author)}" loading="lazy">`
+        : `<span class="cover-placeholder">${escapeHtml(book.title)}<small>${escapeHtml(book.coverLabel || 'Cover to be revealed')}</small></span>`;
+      return book.page
+        ? `<a class="catalog-cover" href="${escapeHtml(book.page)}" aria-label="Explore ${escapeHtml(book.title)}">${cover}</a>`
+        : `<div class="catalog-cover">${cover}</div>`;
+    }).join('');
+    return;
+  }
+
+  catalogGrid.innerHTML = selected
     .map(
       (book) => `
         <article class="feature-card${book.title === 'The End' ? ' large' : ''} reveal">
