@@ -51,3 +51,27 @@ References:
 - https://developers.google.com/apps-script/guides/properties
 - https://developers.google.com/apps-script/concepts/deployments
 - https://developers.google.com/apps-script/reference/mail/mail-app
+
+## Inline confirmations (pending deployment)
+
+The updated `forms.js` submits to a hidden iframe and waits for a correlated
+Apps Script response before showing success. It checks Google's response origin
+and a random per-request ID. Turnstile is still validated before processing.
+No personal data is included in the response message. Errors preserve input;
+a timeout is reported as unknown delivery, without an automatic retry.
+
+Before publishing this frontend change:
+1. Replace the ENTIRE contents of Code.gs in Apps Script with the current
+   `server/Code.gs`, including `pressResponse` near the bottom. The separate
+   ResponseHelpers file from troubleshooting is no longer used; its old
+   functions can remain without affecting this version.
+2. Keep existing Script properties and permissions. Save and update the existing
+   web app deployment to a new version, keeping its URL.
+3. Publish the website change only after that deployment is updated.
+4. Test a real submission in Safari: stay on the website, see Sending followed
+   by confirmation, and verify the Sheet/inbox. Also check a rejected request
+   retains entered details. Live browser behavior has not yet been verified.
+
+The old direct-post frontend remains compatible with the new backend while the
+website release is pending. The new frontend requires the new backend; an old
+backend would save without delivering the inline confirmation and show a timeout.
