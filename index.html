@@ -88,21 +88,20 @@
               <p class="eyebrow">Stay in the loop</p>
               <h2>Receive new releases and editorial notes.</h2>
             </div>
-            <form data-protected-form
-              class="newsletter-form"
-
-              method="POST"
-            ><input type="hidden" name="kind" value="newsletter">
-              <input
-                type="email"
-                name="email"
-                placeholder="Your email address"
-                aria-label="Your email address"
-                required
-              />
-
-
-              <div class="form-verification"><label class="form-trap" aria-hidden="true">Leave this empty<input name="website" tabindex="-1" autocomplete="off"></label><div class="verification"></div><p class="form-note" role="status">This form is temporarily unavailable. Please check back soon.</p><noscript>Enable JavaScript to send this form.</noscript></div><button disabled type="submit">Join the list</button>
+            <form data-protected-form class="newsletter-form" method="POST">
+              <input type="hidden" name="kind" value="newsletter">
+              <label class="newsletter-field" for="newsletter-email">
+                Email address
+                <input id="newsletter-email" type="email" name="email"
+                  placeholder="you@example.com" autocomplete="email" required maxlength="254">
+              </label>
+              <div class="form-verification">
+                <label class="form-trap" aria-hidden="true">Leave this empty<input name="website" tabindex="-1" autocomplete="off"></label>
+                <div class="verification"></div>
+                <p class="form-note" role="status">This form is temporarily unavailable. Please check back soon.</p>
+                <noscript>Enable JavaScript to send this form.</noscript>
+              </div>
+              <button disabled type="submit">Join the list</button>
             </form>
           </div>
         </section>

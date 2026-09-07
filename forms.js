@@ -82,7 +82,7 @@ window.initializePressForms = () => {
     const button = form.querySelector('[type="submit"]');
     const status = form.querySelector('[role="status"]');
     state.widget = window.turnstile.render(form.querySelector('.verification'), {
-      sitekey: formConfig.siteKey, action: 'press_form', theme: 'dark', size: 'flexible',
+      sitekey: formConfig.siteKey, action: 'press_form', theme: 'dark', size: form.clientWidth < 300 ? 'compact' : 'flexible',
       callback: () => {
         if (state.pending || state.complete) return;
         button.disabled = false;

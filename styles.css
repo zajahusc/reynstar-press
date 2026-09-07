@@ -597,10 +597,10 @@ input {
 
 .newsletter-form {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) auto;
-  align-items: center;
-  gap: 12px;
-  width: min(100%, 480px);
+  grid-template-columns: minmax(0, 1fr);
+  align-items: stretch;
+  gap: 18px;
+  width: min(100%, 420px);
   justify-self: end;
 }
 
@@ -953,7 +953,17 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 
 .form-trap { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
 .form-verification { min-width: 0; width: 100%; }
-.newsletter-form { flex-wrap: wrap; }
+.newsletter-field { display: grid; gap: 10px; color: var(--ink-soft); font-size: .85rem; }
+.newsletter-form button { width: 100%; min-width: 0; height: 54px; cursor: pointer; }
+.newsletter-form .form-note { margin: 10px 0 0; color: var(--muted); line-height: 1.6; }
+.newsletter-form .form-note:empty { display: none; }
+.newsletter-form .verification { min-width: 0; }
+@media (max-width: 980px) {
+  .newsletter-form { justify-self: start; max-width: 420px; }
+}
+@media (max-width: 480px) {
+  .newsletter-box { padding: 24px 18px; gap: 28px; }
+}
 button:disabled { opacity: .55; cursor: not-allowed; }
 
 .catalog-home { padding-top: 64px; }
