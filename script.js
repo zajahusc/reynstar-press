@@ -43,10 +43,11 @@ function renderCatalog(books) {
           </div>
           <div class="card-copy">
             <span class="tag">${escapeHtml(book.genre)}</span>
-            <h3>${escapeHtml(book.title)}</h3>
-            <p>${escapeHtml(book.description)}</p>
+            <h3>${book.page ? `<a href="${escapeHtml(book.page)}">${escapeHtml(book.title)}</a>` : escapeHtml(book.title)}</h3>
+            <p>${escapeHtml(String(book.description || '').split(/\n\s*\n/)[0])}</p>
+            ${book.page ? `<a class="text-link" href="${escapeHtml(book.page)}">Explore the book →</a>` : ''}
             <div class="meta-row">
-              <span>By ${escapeHtml(book.author)}</span>
+              <span>By <span class="author-name">${escapeHtml(book.author)}</span></span>
               <span>${escapeHtml(book.release)}</span>
             </div>
           </div>
@@ -62,7 +63,7 @@ function renderCatalog(books) {
   catalogGrid.querySelectorAll('.reveal').forEach((item) => observer.observe(item));
 }
 
-fetch('books.json')
+if (catalogGrid) fetch('books.json')
   .then((response) => {
     if (!response.ok) throw new Error('Could not load books.json');
     return response.json();
@@ -71,15 +72,3 @@ fetch('books.json')
   .catch(() => {
     renderCatalog(fallbackCatalog);
   });
-
-document.querySelector('.newsletter-form')?.addEventListener('submit', (event) => {
-  const button = event.currentTarget.querySelector('button');
-  const input = event.currentTarget.querySelector('input');
-
-  if (button) {
-    button.textContent = 'Sending...';
-    button.disabled = true;
-  }
-
-  if (input) input.disabled = true;
-});

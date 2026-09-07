@@ -31,7 +31,10 @@
           <div class="nav-links">
             <a href="#catalog">Catalog</a>
             <a href="#house">The House</a>
-            <a href="#contact">Contact</a>
+            <a href="author.html">Author</a>
+            <a href="submissions.html">Submissions</a>
+
+            <a href="contact.html">Contact</a>
           </div>
         </nav>
       </header>
@@ -79,11 +82,6 @@
         </section>
 
         <section id="house" class="house container">
-          <div class="house-visual reveal">
-            <div class="photo-panel">
-              <div class="photo-glow"></div>
-            </div>
-          </div>
           <div class="house-copy reveal">
             <p class="eyebrow">The house</p>
             <h2>We publish the books that ask for time.</h2>
@@ -93,13 +91,9 @@
               Chicago, Reynstar Press publishes emotionally resonant work that embraces unconventional
               storytelling and the spaces between realism and the imagined.
             </p>
-            <p class="eyebrow">About Zac James</p>
-            <p>
-              Zac James is a Chicago-based writer whose work explores love, identity, memory, and the strange
-              places we go searching for ourselves. His writing blends queer experience with existential themes,
-              often drawing inspiration from travel, mythology, nature, and the complicated ways people find and
-              lose one another.
-            </p>
+            <p class="eyebrow">About <span class="author-name">zac james</span></p>
+            <p>zac james is a Chicago-based writer. His work spans poetry and fiction, drawing inspiration from love, travel, and the strange experience of being human. When he isn’t writing, he can usually be found traveling, taking photographs, or looking up at the stars.</p>
+            <a class="text-link" href="author.html">Meet zac james →</a>
             <p class="values-note">Serious intentions. A long life for the work.</p>
           </div>
         </section>
@@ -118,11 +112,11 @@
               <p class="eyebrow">Stay in the loop</p>
               <h2>Receive new releases and editorial notes.</h2>
             </div>
-            <form
+            <form data-protected-form
               class="newsletter-form"
-              action="https://formsubmit.co/info@reynstarpress.com"
+
               method="POST"
-            >
+            ><input type="hidden" name="kind" value="newsletter">
               <input
                 type="email"
                 name="email"
@@ -130,9 +124,9 @@
                 aria-label="Your email address"
                 required
               />
-              <input type="hidden" name="_subject" value="New Reynstar Press subscriber" />
-              <input type="hidden" name="_next" value="https://reynstarpress.com/#newsletter" />
-              <button type="submit">Join the list</button>
+
+
+              <div class="form-verification"><label class="form-trap" aria-hidden="true">Leave this empty<input name="website" tabindex="-1" autocomplete="off"></label><div class="verification"></div><p class="form-note" role="status">This form is temporarily unavailable. Please check back soon.</p><noscript>Enable JavaScript to send this form.</noscript></div><button disabled type="submit">Join the list</button>
             </form>
           </div>
         </section>
@@ -147,6 +141,9 @@
           <div class="footer-links">
             <a href="#catalog">Catalog</a>
             <a href="#house">The House</a>
+            <a href="author.html">Author</a>
+            <a href="submissions.html">Submissions</a>
+
             <a href="admin.html">Catalog editor</a>
           </div>
           <p class="copyright">© <span id="year"></span> Reynstar Press</p>
@@ -155,48 +152,42 @@
     </div>
 
     <script id="catalog-data" type="application/json">
-      [
-        {
-          "title": "The End",
-          "author": "Zac James",
-          "genre": "Queer Literary Fiction / Romance / Magical Realism",
-          "description": "The flare arrives without warning. In the aftermath, the world does not end all at once—it empties.",
-          "release": "Summer 2027",
-          "cover": "assets/covers/the-end.png",
-          "banner": "assets/banners/the-end-banner.png",
-          "coverLabel": ""
-        },
-        {
-          "title": "Untitled",
-          "author": "Philip Schorsch",
-          "genre": "Poetry",
-          "description": "An untitled collection of poetry from Philip Schorsch, exploring the textures of memory, place, and the small rituals that make up a day. Release date to be determined.",
-          "release": "Spring 2027",
-          "cover": "",
-          "coverLabel": "Cover to be revealed"
-        },
-        {
-          "title": "Chasing Stars",
-          "author": "Zac James",
-          "genre": "Queer Literary Fiction / Romance / Magical Realism",
-          "description": "Running from a life he no longer recognizes, a man finds himself drawn into a love affair as beautiful as it is impossible to hold onto. Chasing Stars is a queer love story about desire, depression, and the people we mistake for destinations and whether some people enter our lives simply to teach us how to keep moving after they are gone.",
-          "release": "October 1, 2026",
-          "cover": "assets/covers/chasing-stars.png",
-          "banner": "assets/banners/chasing-stars-banner.png",
-          "coverLabel": ""
-        },
-        {
-          "title": "Inevitable Constellations",
-          "author": "Zac James",
-          "genre": "Poetry",
-          "description": "A collection of poetry about the people we love, the lives we imagine, and the strange inevitability of becoming who we are. Inevitable Constellations traces intimacy, loss, longing, and memory through the quiet connections that only become visible when we look backward—like stars that were always there, waiting for us to draw the lines between them.",
-          "release": "September 1, 2026",
-          "cover": "assets/covers/inevitable-constellations.png",
-          "banner": "assets/banners/inevitable-constellations-banner.png",
-          "coverLabel": ""
-        }
-      ]
+[
+  {
+    "title": "The End",
+    "author": "zac james",
+    "genre": "Queer Literary Fiction / Romance / Magical Realism",
+    "description": "The flare arrives without warning. In the aftermath, the world does not end all at once—it empties.",
+    "release": "Summer 2027",
+    "cover": "assets/covers/the-end.png",
+    "banner": "assets/banners/the-end-banner.png",
+    "coverLabel": "",
+    "page": "the-end.html"
+  },
+  {
+    "title": "Chasing Stars",
+    "author": "zac james",
+    "genre": "Queer Literary Fiction / Romance / Magical Realism",
+    "description": "Chasing Stars is a queer love story about two men who find one another at the edges of the lives they were supposed to be living, and about one of the man’s increasingly surreal journey to understand the patterns that have followed him through his life.\n\nMoving between romance and loneliness, reality and mythology, depression and hope, this story explores the intoxicating possibility of meeting someone who makes the world feel new again, and the frightening realization that no matter how far we travel, we still carry every version of ourselves with us.\n\nAt its heart, Chasing Stars is about the beautiful and sometimes dangerous ways we search for meaning in other people, the patterns we mistake for fate, and the stubborn hope that somewhere in the darkness there is still something bright enough to follow.",
+    "release": "September 4, 2026",
+    "cover": "assets/covers/chasing-stars.png",
+    "banner": "assets/banners/chasing-stars-banner.png",
+    "coverLabel": "",
+    "page": "chasing-stars.html"
+  },
+  {
+    "title": "Inevitable Constellations",
+    "author": "zac james",
+    "genre": "Poetry",
+    "description": "Inevitable Constellations is an intimate journey through memory, love, trauma, identity, and the search for meaning in an impossibly vast universe. Moving from the fever-dream forests of childhood to distant planets, ruined worlds, dark oceans, and the infinite expanse of the stars, zac james transforms the deeply personal into something cosmic. These poems trace a life spent learning to escape our given roles, love without certainty, survive betrayal, make peace with the past, and confront the terrifying beauty of our own impermanence.\n\nInevitable Constellations asks what remains when everything we know eventually disappears. Its answer is both simple and infinite: love. The people we hold, the lives we touch, and the pieces of ourselves we leave behind become points of light in something larger than any one lifetime. We are temporary, but perhaps nothing about us is truly lost. We are stardust finding its way home.",
+    "release": "September 1, 2026",
+    "cover": "assets/covers/inevitable-constellations.png",
+    "banner": "assets/banners/inevitable-constellations-banner.png",
+    "coverLabel": "",
+    "page": "inevitable-constellations.html"
+  }
+]
     </script>
     <script src="script.js"></script>
-  </body>
+  <script src="forms-config.js"></script><script src="forms.js"></script></body>
 </html>
