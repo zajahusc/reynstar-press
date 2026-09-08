@@ -5,16 +5,26 @@ const states = new Map();
 protectedForms.forEach((form) => {
   const status = form.querySelector('[role="status"]');
   const button = form.querySelector('[type="submit"]');
-  const state = { pending: false, complete: false, message: '', widget: null, requestId: null };
+  const state = { pending: false, verifying: false, token: null, complete: false, message: '', widget: null, requestId: null };
   states.set(form, state);
   status.tabIndex = -1;
   form.addEventListener('submit', (event) => {
     event.preventDefault();
-    if (state.pending || state.complete) return;
-    if (!formConfig.backendReady || !formConfig.siteKey || !formConfig.endpoint || !form.querySelector('[name="cf-turnstile-response"]')?.value) {
-      status.textContent = 'Please complete the verification before sending.';
+    if (state.pending || state.complete || state.verifying) return;
+    if (!formConfig.backendReady || !formConfig.siteKey || !formConfig.endpoint || state.widget === null) {
+      status.textContent = 'The form is still loading. Please try again shortly.';
       return;
     }
+    if (!state.token) {
+      state.verifying = true;
+      button.disabled = true;
+      status.textContent = 'Verifying…';
+      form.querySelector('.form-verification').hidden = false;
+      window.turnstile.reset(state.widget);
+      window.turnstile.execute(state.widget);
+      return;
+    }
+    if (!form.reportValidity()) return;
     const bytes = crypto.getRandomValues(new Uint8Array(16));
     state.requestId = Array.from(bytes, (byte) => byte.toString(16).padStart(2, '0')).join('');
     const frame = document.createElement('iframe');
@@ -31,6 +41,7 @@ protectedForms.forEach((form) => {
     form.target = frame.name;
     form.action = formConfig.endpoint;
     state.pending = true;
+    state.token = null;
     state.message = '';
     button.disabled = true;
     form.setAttribute('aria-busy', 'true');
@@ -61,7 +72,7 @@ window.addEventListener('message', (event) => {
     const kind = form.querySelector('[name="kind"]').value;
     state.message = data.success
       ? (kind === 'order' ? 'Thank you. Your order request has been received. We’ll follow up by email to confirm the details.' : kind === 'newsletter' ? 'Thank you. Your signup request has been received.' : 'Thank you. Your message has been received.')
-      : 'Your request could not be saved. Your details are still here. Complete verification again, then retry.';
+      : 'Your request could not be saved. Your details are still here. Please try submitting again.';
     const status = form.querySelector('[role="status"]');
     status.textContent = state.message;
     status.focus();
@@ -71,10 +82,21 @@ window.addEventListener('message', (event) => {
       form.querySelectorAll('input, textarea, select').forEach((input) => { input.disabled = true; });
       form.querySelector('.verification').hidden = true;
     } else {
+      state.token = null;
       window.turnstile.reset(state.widget);
+      form.querySelector('[type="submit"]').disabled = false;
     }
   }
 });
+
+function verificationFailed(form) {
+  const state = states.get(form);
+  if (state.pending || state.complete) return;
+  state.verifying = false;
+  state.token = null;
+  form.querySelector('[type="submit"]').disabled = false;
+  form.querySelector('[role="status"]').textContent = 'Verification could not finish. Please try submitting again.';
+}
 
 window.initializePressForms = () => {
   protectedForms.forEach((form) => {
@@ -83,22 +105,28 @@ window.initializePressForms = () => {
     const status = form.querySelector('[role="status"]');
     state.widget = window.turnstile.render(form.querySelector('.verification'), {
       sitekey: formConfig.siteKey, action: 'press_form', theme: 'dark', size: form.clientWidth < 300 ? 'compact' : 'flexible',
-      callback: () => {
-        if (state.pending || state.complete) return;
+      execution: 'execute',
+      appearance: 'interaction-only',
+      retry: 'never',
+      callback: (token) => {
+        if (!state.verifying || state.pending || state.complete) return;
+        state.verifying = false;
+        state.token = token;
         button.disabled = false;
-        status.textContent = state.message;
+        status.textContent = '';
+        form.requestSubmit(button);
       },
-      'expired-callback': () => {
-        if (state.pending || state.complete) return;
-        button.disabled = true;
-        status.textContent = state.message || 'Please complete verification again.';
+      'before-interactive-callback': () => {
+        status.textContent = 'Please complete verification to send your request.';
       },
-      'error-callback': () => {
-        if (state.pending || state.complete) return;
-        button.disabled = true;
-        status.textContent = 'Verification could not load. Please refresh and try again.';
-      }
+      'expired-callback': () => verificationFailed(form),
+      'timeout-callback': () => verificationFailed(form),
+      'error-callback': () => { verificationFailed(form); return true; }
+
     });
+    button.disabled = false;
+    status.textContent = '';
+    form.querySelector('.form-verification').hidden = true;
   });
 };
 

@@ -96,3 +96,16 @@ if (catalogGrid) fetch('books.json')
   .catch(() => {
     renderCatalog(fallbackCatalog);
   });
+
+// Keep folder navigation usable when opening a local HTML file directly.
+if (window.location.protocol === 'file:') {
+  document.addEventListener('click', (event) => {
+    const link = event.target.closest('a[href]');
+    if (!link) return;
+    const url = new URL(link.href, document.baseURI);
+    if (url.protocol === 'file:' && url.pathname.endsWith('/')) {
+      url.pathname += 'index.html';
+      link.href = url.href;
+    }
+  });
+}
