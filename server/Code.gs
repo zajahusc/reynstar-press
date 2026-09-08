@@ -27,7 +27,7 @@ function doPost(e) {
     if (email.length > 254 || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return reject(stage);
     if (kind !== 'newsletter' && (!name || name.length > 150)) return reject(stage);
     if (kind === 'contact' && (!message || message.length > 5000 || !['General inquiry', 'Submission inquiry'].includes(p.topic))) return reject(stage);
-    if (kind === 'order' && (!['Chasing Stars', 'Inevitable Constellations'].includes(p.book) || !address || address.length > 1000 || !Number.isInteger(quantity) || quantity < 1 || quantity > 100 || !['Hardcover', 'Paperback'].includes(p.format))) return reject(stage);
+    if (kind === 'order' && (!['Chasing Stars', 'Inevitable Constellations'].includes(p.book) || !address || address.length > 1000 || !Number.isInteger(quantity) || quantity < 1 || quantity > 100 || (p.book === 'Inevitable Constellations' && !['Hardcover', 'Paperback'].includes(p.format)))) return reject(stage);
     stage = 'turnstile-request';
     const response = UrlFetchApp.fetch('https://challenges.cloudflare.com/turnstile/v0/siteverify', {
       method: 'post', payload: { secret: secret, response: token }, muteHttpExceptions: true
@@ -45,7 +45,7 @@ function doPost(e) {
         subject = 'Reynstar Press: newsletter signup'; body = 'Email: ' + email;
       } else {
         subject = 'Reynstar Press: book order request';
-        body = 'Book: ' + p.book + '\nName: ' + name + '\nEmail: ' + email + '\nAddress: ' + address + '\nQuantity: ' + quantity + '\nFormat: ' + p.format;
+        body = 'Book: ' + p.book + '\nName: ' + name + '\nEmail: ' + email + '\nAddress: ' + address + '\nQuantity: ' + quantity + (p.book === 'Inevitable Constellations' ? '\nFormat: ' + p.format : '');
       }
       stage = 'email-send';
       MailApp.sendEmail({ to: recipient, replyTo: email, subject: subject, body: body });
