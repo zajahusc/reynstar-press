@@ -387,7 +387,7 @@ input {
 }
 
 .cover-chasing-hero {
-  background: url("assets/covers/chasing-stars.png") center/cover no-repeat;
+  background: url("assets/covers/chasing-stars.jpg") center/cover no-repeat;
 }
 
 .cover-inevitable-hero {
@@ -471,12 +471,14 @@ input {
   background-position: center;
 }
 
+.card-art[data-banner="assets/covers/clomp.png"] { background-color: #b7def0; background-size: auto 100%; background-repeat: no-repeat; }
+
 .cover-inevitable {
   background: url("assets/covers/inevitable-constellations.png") center/cover no-repeat;
 }
 
 .cover-chasing {
-  background: url("assets/covers/chasing-stars.png") center/cover no-repeat;
+  background: url("assets/covers/chasing-stars.jpg") center/cover no-repeat;
 }
 
 .cover-pending {
@@ -919,7 +921,7 @@ input {
 .book-detail { display: grid; grid-template-columns: minmax(0, 340px) minmax(0, 1fr); gap: 72px; align-items: start; padding-top: 40px; }
 .detail-cover { width: 100%; box-shadow: var(--shadow); }
 .release-note { color: var(--gold) !important; }
-.reading-page { max-width: 760px; margin: 0 auto; }
+.reading-page { width: 100%; }
 .reading-page > .button { margin-top: 16px; }
 .book-list { list-style: none; padding: 0; }
 .book-list li { padding: 24px 0; border-bottom: 1px solid var(--line); }
