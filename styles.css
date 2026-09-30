@@ -195,6 +195,36 @@ input {
   color: var(--ink);
 }
 
+.book-availability {
+  margin-top: 28px;
+}
+
+.book-availability .availability-heading {
+  margin: 0;
+  font-family: inherit;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--muted);
+}
+
+.book-availability .book-retailers {
+  margin-top: 12px;
+}
+
+.book-retailers .button {
+  font: inherit;
+  white-space: nowrap;
+}
+
+.book-retailers .button:disabled {
+  background: #303030;
+  border-color: #555;
+  color: #aaa;
+  box-shadow: none;
+  cursor: not-allowed;
+  transform: none;
+}
+
 .hero {
   position: relative;
   padding: 72px 0 32px;
